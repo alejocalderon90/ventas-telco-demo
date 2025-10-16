@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ventas TELCO — Demo</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="dark light">
+</head>
+<body class="min-h-screen gradient text-slate-100">
+  <!-- BOOT LOADER (al iniciar la página) -->
+  <div id="bootloader">
+    <div class="boot-card relative">
+      <div class="boot-ring" style="width:min(62vw,580px); height:min(62vw,580px);"></div>
+      <img src="img/ChatGPT Image 16 oct 2025, 01_11_07 p.m.-Photoroom.png" alt="Cargando TELCO" class="boot-img" />
+      <p class="boot-title">Iniciando TELCO…</p>
+      <p class="boot-sub">Conectando con el backend</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="mx-auto max-w-[1600px] px-4 py-5">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-2xl glass grid place-items-center"><span class="text-xl"><img src="/img/ChatGPT Image 16 oct 2025, 01_11_07 p.m.-Photoroom.png" alt=""></span></div>
+      <div>
+        <h1 class="text-2xl md:text-3xl font-semibold">Ventas TELCO — Demo</h1>
+        <p class="text-slate-300 text-sm">Consultas sobre dataset ficticio (estilo Movistar/Claro)</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ASIDE fijo (desktop) -->
+  <aside class="hidden md:block fixed left-4 top-28 w-[280px] space-y-4 z-20">
+    <div class="glass rounded-xl p-3 md:p-4">
+      <h3 class="text-sm font-semibold mb-2">Atajos</h3>
+      <ul class="space-y-2 text-sm">
+        <li><button data-q="total por mes" class="quick glass w-full rounded-lg px-3 py-2 text-left hover:bg-white/10">Total por mes</button></li>
+        <li><button data-q="top 5 clientes en último mes" class="quick glass w-full rounded-lg px-3 py-2 text-left hover:bg-white/10">Top 5 clientes (últ. mes)</button></li>
+        <li><button data-q="variación mensual" class="quick glass w-full rounded-lg px-3 py-2 text-left hover:bg-white/10">Variación mensual total</button></li>
+        <li><button data-q="variación por emisora" class="quick glass w-full rounded-lg px-3 py-2 text-left hover:bg-white/10">Variación por emisora</button></li>
+        <li><button data-q="variación por servicio" class="quick glass w-full rounded-lg px-3 py-2 text-left hover:bg-white/10">Variación por servicio</button></li>
+      </ul>
+    </div>
+    <div class="glass rounded-xl p-3 md:p-4 text-xs text-slate-300">
+      <p>Tablas estilo Markdown con montos en <b>$</b> y variaciones %.</p>
+    </div>
+  </aside>
+
+  <!-- MAIN (chat con margen para el aside) -->
+  <main class="mx-auto max-w-[1600px] px-3 md:px-4 pb-24">
+    <section>
+      <div class="md:ml-[320px]">
+        <div class="glass rounded-2xl p-3 md:p-4 shadow-xl min-w-0">
+          <div id="chatOutput" class="space-y-4 min-h-[300px] p-1"></div>
+
+          <div id="emptyState" class="text-center py-8 text-slate-300">
+            <h2 class="text-lg font-medium">¿Qué querés consultar?</h2>
+            <p class="text-sm mt-1">Ej.: “variación por emisora”, “top 5 clientes en último mes”, “total por mes”</p>
+          </div>
+
+          <form id="chatForm" class="mt-3">
+            <div class="glass rounded-xl p-2 flex items-center gap-2">
+              <input id="userInput" type="text" class="flex-1 bg-transparent focus:outline-none px-2 py-2"
+                     placeholder="Escribí tu consulta..." autocomplete="off" />
+              <button class="rounded-lg bg-blue-600 hover:bg-blue-500 active:bg-blue-700 px-4 py-2 font-medium">Enviar</button>
+            </div>
+          </form>
+
+          <p class="text-[11px] text-slate-400 mt-2">
+            Backend: <span class="font-mono mono">http://127.0.0.1:8001</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Loader durante consultas -->
+  <div id="loader" class="hidden fixed inset-0 grid place-items-center bg-black/50 backdrop-blur-sm z-50">
+    <div class="glass rounded-2xl p-5 text-center shadow-2xl">
+      <div class="animate-pulse text-4xl">⚡</div>
+      <p class="mt-2 text-sm">Procesando consulta…</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

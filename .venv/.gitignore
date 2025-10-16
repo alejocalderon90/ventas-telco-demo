@@ -1,0 +1,27 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Data: ignorar todo salvo el demo
+data/*
+!data/Analisis_Ventas_TELCO_Demo.xlsx
+
+# Builds y misc
+dist/
+build/
